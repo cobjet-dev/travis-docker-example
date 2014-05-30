@@ -4,11 +4,12 @@
 set -e
 
 # Kill background processes on exit
-trap 'kill $(jobs -p)' SIGINT SIGTERM EXIT
+trap 'kill -9 $(jobs -p)' SIGINT SIGTERM EXIT
 
 # Start docker daemon
 docker -d &
 sleep 1
 
 # Use docker
-docker run ubuntu /bin/echo hello world
+docker pull buxybox
+docker run busybox /bin/echo hello world
